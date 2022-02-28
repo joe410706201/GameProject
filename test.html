@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset = "utf-8">
+		<title>TEST.site</title>
+		<link rel="stylesheet" href="test.css">
+    </head>
+    <body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js"></script>
+	<canvas id = "canvas1"></canvas>
+	<p>
+		<button type = "button" onclick = "moveup()">up</button>
+		<button type = "button" onclick = "movedown()">down</button>
+		<button type = "button" onclick = "moveleft()">left</button>
+		<button type = "button" onclick = "moveright()">right</button>
+		<button type = "button" id = "clear" value = "clear">clear</button>
+	</p>
+	<script>
+		class point{
+			constructor(x,y){
+				if (x == undefined){
+					this.x = 0
+				}
+				if (y == undefined){
+					this.y = 0
+				}
+				this.x = x
+				this.y = y
+				
+			}
+			show(){
+				alert("this point at ("+this.x+","+this.y+")")
+			}
+		}
+		class circle{
+			constructor(point,r){
+				this.x = point.x
+				this.y = point.y
+				if (r == undefined){
+					this.r = 0
+				}
+				this.r = r
+			}
+			show(){
+				alert("circle center at("+this.x+","+this.y+") and radium = "+this.r)
+			}
+		}
+		/*draw text at position with font*/
+		function drawtext(text,font,position){
+			var c = document.getElementById("canvas1")
+			var ctx = c.getContext("2d")
+			ctx.beginPath()
+			//if text is not string type
+			if (typeof(text) != "string"){
+				return
+			}
+			// if not given font setting
+			if (font == undefined){
+				font = "30px Arial"
+			}
+			ctx.font = font
+			ctx.fillText(text,position.x,position.y)
+			
+		}
+		//drawline
+		function drawline(start,end){
+			var c = document.getElementById("canvas1")
+			var ctx = c.getContext("2d")
+			ctx.beginPath()
+			ctx.moveTo(start.x,start.y)
+			ctx.lineTo(end.x,end.y)
+			ctx.stroke()
+		}
+		// draw a circle
+		function drawcircle(circle){
+			var c = document.getElementById("canvas1")
+			var ctx = c.getContext("2d")
+			ctx.beginPath()
+			ctx.arc(circle.x,circle.y,circle.r,0,2*Math.PI)
+			ctx.stroke()
+		}
+		// move circle up
+		function moveup(){
+			circle1.y -= 5
+			drawcircle(circle1)
+		}
+		
+		// move circle down
+		function movedown(){
+			circle1.y += 5
+			drawcircle(circle1)
+		}
+		
+		// move circle left
+		function moveleft(){
+			circle1.x -= 5
+			drawcircle(circle1)
+		}
+		
+		// move circle right
+		function moveright(){
+			circle1.x += 5
+			drawcircle(circle1)
+		}
+		// clear canvas
+		function clear(){
+			context.clearRect(0,0,canvas.width,canvas.height)
+		}
+		let p = new point(80,75)
+		let circle1 = new circle(p,20)
+		drawcircle(circle1)
+		drawline(new point(10,50),new point(20,60))
+		document.getElementById('clear').addEventListener('click', function() {
+        context.clearRect(0, 0, canvas1.width, canvas1.height);
+      }, false);
+
+	</script>
+    </body>
+</html>

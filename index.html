@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset = "utf-8">
+		<title> Game Programing resource </title>
+    </head>
+    <body>
+		<li><a href = "test.html" target = "_blank">test.html</a></li>
+		<li><a href = "https://docs.github.com/en/get-started/quickstart/set-up-git">github
+		</a></li>
+		<li><a href = "https://www.html5canvastutorials.com/" target = "_blank">html5canvastutorials.com</a></li>
+		<li><a href = "https://sites.google.com/site/cgwith3js/home/vector-math" target = "_blank">threejs</a></li>
+		<li><a href = "https://jsfiddle.net/" target = "_blank ">jsfiddle.net</a></li>
+		<li><a href = "https://docs.google.com/presentation/d/1pWFohE37MGZyjLmqaUTTFyrEJC91WsoK8mjm1hzDOpw/edit#slide=id.g1119e572378_0_0" target = "_blank">GamePrograming outline</a></li>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js"></script>
+		<script>
+		class myVector{
+			constructor(x,y,z){
+				if (x == undefined){
+					x = 0
+				}
+				if (y == undefined){
+					y = 0
+				}
+				if (z == undefined){
+					z = 0
+				}
+				this.x = x
+				this.y = y
+				this.z = z
+				this.length = Math.sqrt(x*x+y*y+z*z);
+			}
+			show(){
+				console.log("x:"+this.x)
+				console.log("y:"+this.y)
+				console.log("z:"+this.z)
+				console.log("length:"+this.length) 
+			}
+		}
+		var vector1 = new THREE.Vector3(1,2,3);
+		var vector2 = new THREE.Vector3(2,1,1)
+		console.log("vector1 dot vertor2 = "+vector1.dot(vector2))
+		console.log("vector1.x = "+vector1.x)
+		console.log("vector1.y = "+vector1.y)
+		console.log("vector1.z = "+vector1.z)
+		var myv1 = new myVector()
+		myv1.show()
+	</script>
+    </body>
+</html>
